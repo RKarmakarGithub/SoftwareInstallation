@@ -1,0 +1,67 @@
+
+For Ubuntu instalation see the following link
+https://linuxconfig.org/how-to-upgrade-ubuntu-to-22-04-lts-jammy-jellyfish
+https://www.youtube.com/watch?v=jYa8yhuZQXM
+https://askubuntu.com/questions/1085295/error-while-trying-to-upgrade-from-ubuntu-18-04-to-18-10-please-install-all-av
+
+Q.How to remove psql (PostgreSQL) 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1) and all its packeges
+	
+	Get help from ChatGPT
+	
+	Step 1: sudo systemctl stop postgresql
+	Step 2: sudo apt purge postgresql-14
+	Step 3: sudo rm -rf /etc/postgresql/14
+	Step 4: sudo rm -rf /var/lib/postgresql/14/main
+	Step 5: sudo deluser postgres
+	Step 6: sudo delgroup postgres
+	Step 7: sudo apt autoremove
+
+Q.How to install PostgreSQL 15.2 in Ubuntu 22.04.1 LTS
+	
+	Get help from ChatGPT
+	
+	Step 1: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+	Step 2: wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+	Step 3: sudo apt update.
+	Step 4: sudo apt install postgresql-15.
+	Step 5: systemctl status postgresql.
+	Step 6: psql --version.
+	Step 7: sudo systemctl restart postgresql
+	Step 8: sudo systemctl enable postgresql
+
+Q.How to set password in postgres 15.2
+	
+	Step 1: sudo -u postgres psql
+	Step 2: ALTER USER postgres WITH PASSWORD 'your_password';
+	Step 3: \q
+
+Q.How to uninstall xampp Version: XAMPP for Linux 1.8.3-3 and all its subodinate file folder from Ubuntu 22.04.1 LTS
+
+	Get help from ChatGPT
+
+	1>sudo /opt/lampp/lampp stop
+	2>sudo /opt/lampp/uninstall
+	3>sudo rm -rf /opt/lampp
+	Get status sudo /opt/lampp/xampp status
+	
+Q.How to install xampp Version: XAMPP for Linux 8.2.4-0 in Ubuntu 22.04.1 LTS
+
+	Get help from https://vitux.com/ubuntu-xampp/
+
+	Step 1: Download the installation package
+			The first step is to download the XAMPP package for Linux from the official Apache Friends website:
+			https://www.apachefriends.org/index.html
+	Step 2: Make the installation package executable
+			cd /home/ubuntu/xampp-linux-x64-8.2.12-0-installer.run
+			chmod 755 xampp-linux-x64-8.2.12-0-installer.run
+	Step 4: Launch the Setup Wizard
+			sudo ./xampp-linux-x64-8.2.12-0-installer.run
+	Step 5: sudo /opt/lampp/lampp start
+
+	Get status sudo /opt/lampp/xampp status
+
+Q.Where is php.ini file xampp Version: XAMPP for Linux 8.2.4-0 in Ubuntu 22.04.1 LTS
+
+	cd /opt/lampp/etc/php.ini
+	mv php.ini php.ini_original
+	mv /tmp/php.ini /opt/lampp/etc/php.ini
