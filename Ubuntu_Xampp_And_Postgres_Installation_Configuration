@@ -1,8 +1,9 @@
 
 For Ubuntu instalation see the following link
-https://linuxconfig.org/how-to-upgrade-ubuntu-to-22-04-lts-jammy-jellyfish
-https://www.youtube.com/watch?v=jYa8yhuZQXM
-https://askubuntu.com/questions/1085295/error-while-trying-to-upgrade-from-ubuntu-18-04-to-18-10-please-install-all-av
+
+	https://linuxconfig.org/how-to-upgrade-ubuntu-to-22-04-lts-jammy-jellyfish
+	https://www.youtube.com/watch?v=jYa8yhuZQXM
+	https://askubuntu.com/questions/1085295/error-while-trying-to-upgrade-from-ubuntu-18-04-to-18-10-please-install-all-av
 
 Q.How to remove psql (PostgreSQL) 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1) and all its packeges
 	
@@ -16,7 +17,7 @@ Q.How to remove psql (PostgreSQL) 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1) and all 
 	Step 6: sudo delgroup postgres
 	Step 7: sudo apt autoremove
 
-Q.How to install PostgreSQL 15.2 in Ubuntu 22.04.1 LTS
+Q.How to install PostgreSQL 15.6 in Ubuntu 22.04.1 LTS
 	
 	Get help from ChatGPT
 	
@@ -29,11 +30,26 @@ Q.How to install PostgreSQL 15.2 in Ubuntu 22.04.1 LTS
 	Step 7: sudo systemctl restart postgresql
 	Step 8: sudo systemctl enable postgresql
 
-Q.How to set password in postgres 15.2
+Q.How to set password in postgres 15.6
 	
 	Step 1: sudo -u postgres psql
 	Step 2: ALTER USER postgres WITH PASSWORD 'your_password';
 	Step 3: \q
+
+Q.Postgres 15.6: Accept remote connections and its configuration
+
+	vi /etc/postgresql/15/main/postgresql.conf
+	Search for listen_addresses and make the following change
+	listen_addresses = '*'
+	port = 5432
+
+	vi /etc/postgresql/15/main/pg_hba.conf
+	Add following lines 
+	local   all             all                                     trust
+	host    all             all             0.0.0.0/0               md5
+	local   all             postgres                                md5
+
+	sudo service postgresql restart
 
 Q.How to uninstall xampp Version: XAMPP for Linux 1.8.3-3 and all its subodinate file folder from Ubuntu 22.04.1 LTS
 
