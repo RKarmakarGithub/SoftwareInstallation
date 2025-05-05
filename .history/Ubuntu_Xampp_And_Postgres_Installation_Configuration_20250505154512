@@ -44,34 +44,12 @@ Q.Postgres 15.6: Accept remote connections and its configuration
 	port = 5432
 
 	vi /etc/postgresql/15/main/pg_hba.conf
+	Add following lines 
+	local   all             all                                     trust
+	host    all             all             0.0.0.0/0               md5
+	local   all             postgres                                md5
 
-# Database administrative login by Unix domain socket
-# Off by Rajesh
-#local   all             postgres                                peer
-
-# TYPE  DATABASE        USER            ADDRESS                 METHOD
-
-# "local" is for Unix domain socket connections only
-# off by Rajesh
-#local   all             all                                     peer
-#add by Rajesh
-local   all             all                                     md5
-host    all             all             0.0.0.0/0               md5
-# IPv4 local connections:
-host    all             all             127.0.0.1/32            scram-sha-256
-# IPv6 local connections:
-# change by Rajesh
-#host    all             all             ::1/128                 scram-sha-256
-host    all             postgres             ::1/128              md5
-# Allow replication connections from localhost, by a user with the
-# replication privilege.
-local   replication     all                                     peer
-host    replication     all             127.0.0.1/32            scram-sha-256
-host    replication     all             ::1/128                 scram-sha-256
-
-systemctl stop postgresql
-systemctl start postgresql
-systemctl status postgresql
+	sudo service postgresql restart
 
 Q.How to uninstall xampp Version: XAMPP for Linux 1.8.3-3 and all its subodinate file folder from Ubuntu 22.04.1 LTS
 
